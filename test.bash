@@ -1,0 +1,2 @@
+./build.bash
+./bin/pacman "$@"
