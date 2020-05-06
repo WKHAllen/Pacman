@@ -1,9 +1,7 @@
 #ifndef PACMAN_BOARD_H
 #define PACMAN_BOARD_H
 
-typedef enum _Tile {
-	Space, Wall, Food
-} Tile;
+#include "tile.h"
 
 typedef struct _PacmanBoard {
 	int width;
