@@ -26,6 +26,13 @@ void set_tile(PacmanBoard *board, int x, int y, Tile tile)
 	board->tiles[x][y] = tile;
 }
 
+void fill_board(PacmanBoard *board, Tile tile)
+{
+	for (int i = 0; i < board->width; i++)
+		for (int j = 0; j < board->height; j++)
+			board->tiles[i][j] = tile;
+}
+
 void destroy_board(PacmanBoard *board)
 {
 	for (int i = 0; i < board->width; i++)
