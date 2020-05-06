@@ -1,9 +1,9 @@
 #ifndef PACMAN_GAME_H
 #define PACMAN_GAME_H
 
-#include "board.h"
-#include "player.h"
-#include "ghost.h"
+#include "world/board.h"
+#include "entity/player.h"
+#include "entity/ghost.h"
 
 typedef struct _PacmanGame {
 	PacmanBoard *board;
