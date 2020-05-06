@@ -16,12 +16,12 @@ PacmanBoard *create_board(int width, int height)
 	return board;
 }
 
-Tile get_tile(PacmanBoard *board, int x, int y)
+Tile get_board_tile(PacmanBoard *board, int x, int y)
 {
 	return board->tiles[x][y];
 }
 
-void set_tile(PacmanBoard *board, int x, int y, Tile tile)
+void set_board_tile(PacmanBoard *board, int x, int y, Tile tile)
 {
 	board->tiles[x][y] = tile;
 }

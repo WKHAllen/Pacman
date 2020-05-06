@@ -10,8 +10,8 @@ typedef struct _PacmanBoard {
 } PacmanBoard;
 
 PacmanBoard *create_board(int width, int height);
-Tile get_tile(PacmanBoard *board, int x, int y);
-void set_tile(PacmanBoard *board, int x, int y, Tile tile);
+Tile get_board_tile(PacmanBoard *board, int x, int y);
+void set_board_tile(PacmanBoard *board, int x, int y, Tile tile);
 void fill_board(PacmanBoard *board, Tile tile);
 void destroy_board(PacmanBoard *board);
 
