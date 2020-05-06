@@ -40,6 +40,22 @@ void set_pos(Pos *pos, int x, int y)
 	pos->y = y;
 }
 
+void update_pos_x(Pos *pos, int amount)
+{
+	pos->x += amount;
+}
+
+void update_pos_y(Pos *pos, int amount)
+{
+	pos->y += amount;
+}
+
+void update_pos(Pos *pos, int x_amount, int y_amount)
+{
+	pos->x += x_amount;
+	pos->y += y_amount;
+}
+
 void free_pos(Pos *pos)
 {
 	free(pos);
