@@ -1,8 +1,11 @@
 #ifndef PACMAN_READDIR_H
 #define PACMAN_READDIR_H
 
-#include "../bin/include/list.h"
+#include <string>
+#include <vector>
 
-List *list_files(char *path);
+using namespace std;
+
+vector<string> listFiles(string path);
 
 #endif // PACMAN_READDIR_H

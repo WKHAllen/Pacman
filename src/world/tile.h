@@ -1,8 +1,10 @@
 #ifndef PACMAN_TILE_H
 #define PACMAN_TILE_H
 
-typedef enum _Tile {
-	Space, Wall, Food
-} Tile;
+enum Tile {
+	Space,
+	Wall,
+	Food
+};
 
 #endif // PACMAN_TILE_H

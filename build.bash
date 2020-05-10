@@ -1,2 +1,2 @@
-gcc -L./bin -Wl,-rpath=./bin -o bin/pacman src/*.c -lcstructures
+g++ -o bin/pacman src/*.cpp
 chmod +x bin/pacman

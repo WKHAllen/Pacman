@@ -1,2 +1,2 @@
 @echo off
-gcc -o bin/pacman src/*.c -L./bin -lcstructures
+g++ -o bin/pacman src/*.cpp

@@ -3,8 +3,9 @@
 
 #include "../misc/pos.h"
 
-typedef struct _PacmanGhost {
-	Pos *pos;
-} PacmanGhost;
+class PacmanGhost {
+	private:
+		Pos pos;
+};
 
 #endif // PACMAN_GHOST_H
