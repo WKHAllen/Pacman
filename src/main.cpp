@@ -68,7 +68,7 @@ string selectMap(string mapDir) {
 		retCode = getInt(&choice);
 	}
 
-	return files[choice];
+	return files[choice - 1];
 }
 
 void play(string mapFile) {
@@ -87,7 +87,7 @@ void pause(string prompt) {
 }
 
 int main(int argc, char *argv[]) {
-	int done = 0;
+	bool done = false;
 	do {
 		clearScreen();
 		cout << "        P A C M A N        " << endl << endl;
@@ -109,10 +109,10 @@ int main(int argc, char *argv[]) {
 				// TODO: launch map editor
 				break;
 			case 3:
-				done = 1;
+				done = true;
 				break;
 		}
-	} while (done == 0);
+	} while (!done);
 
 	clearScreen();
 	cout << "Thanks for playing!" << endl;
