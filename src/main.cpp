@@ -49,7 +49,7 @@ int selection(string prompt, int numOptions, string options[]) {
 }
 
 string selectMap(string mapDir) {
-	vector<string> files = listFiles(mapDir);
+	vector<string> files = listFilesByExt(mapDir, ".pacmap");
 	if (files.size() == 0)
 		return "";
 	int numFiles = files.size();
