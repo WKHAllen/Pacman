@@ -3,13 +3,8 @@
 
 #include <unordered_map>
 #include <string>
-#include "world/tile.h"
-#include "world/board.h"
 
 using namespace std;
-
-string encodeMap(PacmanBoard map);
-PacmanBoard decodeMap(string encodedMap, int width, int height);
 
 class PacmanMapfile {
 	private:
@@ -23,7 +18,7 @@ class PacmanMapfile {
 		int getPropertyInt(string key);
 		void setProperty(string key, string value);
 		void setPropertyInt(string key, int value);
-		bool propertyExists(string key);
+		bool hasProperty(string key);
 		bool save();
 		bool save(string mapfile);
 };
