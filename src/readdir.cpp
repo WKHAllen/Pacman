@@ -29,10 +29,8 @@ vector<string> listFilesByExt(string path, string ext) {
 	vector<string> files;
 
 	for (const auto &entry : filesystem::directory_iterator(path)) {
-		if (entry.is_regular_file()) {
-			if (endsWith(entry.path().string(), ext)) {
-				files.push_back(entry.path().string());
-			}
+		if (entry.is_regular_file() && endsWith(entry.path().string(), ext)) {
+			files.push_back(entry.path().string());
 		}
 	}
 

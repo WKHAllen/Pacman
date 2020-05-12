@@ -4,6 +4,7 @@
 #include <vector>
 #include "game.h"
 #include "readdir.h"
+#include "mapfile.h"
 
 using namespace std;
 
