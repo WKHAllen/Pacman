@@ -5,6 +5,7 @@
 #include "game.h"
 #include "readdir.h"
 #include "mapfile.h"
+#include "mapboard.h"
 
 using namespace std;
 
