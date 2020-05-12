@@ -9,7 +9,7 @@
 using namespace std;
 
 string encodeMap(PacmanBoard map);
-PacmanBoard decodeMap(string encodedMap);
+PacmanBoard decodeMap(string encodedMap, int width, int height);
 
 class PacmanMapfile {
 	private:
@@ -20,7 +20,9 @@ class PacmanMapfile {
 		PacmanMapfile();
 		PacmanMapfile(string mapfile);
 		string getProperty(string key);
+		int getPropertyInt(string key);
 		void setProperty(string key, string value);
+		void setPropertyInt(string key, int value);
 		bool propertyExists(string key);
 		bool save();
 		bool save(string mapfile);

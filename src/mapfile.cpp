@@ -26,11 +26,38 @@ vector<string> splitString(string str, string delimiter) {
 }
 
 string encodeMap(PacmanBoard map) {
-	// TODO: encode the map
+	string encodedMap = "";
+
+	for (int i = 0; i < map.width(); i++) {
+		for (int j = 0; j < map.height(); j++) {
+			encodedMap += to_string(map.getTile(i, j));
+		}
+	}
+
+	return encodedMap;
 }
 
-PacmanBoard decodeMap(string encodedMap) {
-	// TODO: decode the map
+PacmanBoard decodeMap(string encodedMap, int width, int height) {
+	PacmanBoard map(width, height);
+
+	if (encodedMap.length() != width * height) {
+		if ((encodedMap.length() == width * height + 1 && encodedMap[encodedMap.length() - 1] == '\r')
+		 || (encodedMap.length() == width * height + 1 && encodedMap[encodedMap.length() - 1] == '\n')
+		 || (encodedMap.length() == width * height + 2 && encodedMap[encodedMap.length() - 2] == '\r' && encodedMap[encodedMap.length() - 1] == '\n')) {
+			encodedMap.erase(encodedMap.begin() + width * height, encodedMap.end());
+		} else {
+			return map;
+		}
+	}
+
+	for (int i = 0; i < width; i++) {
+		for (int j = 0; j < height; j++) {
+			string s(1, encodedMap[i * height + j]);
+			map.setTile(i, j, (Tile)stoi(s));
+		}
+	}
+
+	return map;
 }
 
 PacmanMapfile::PacmanMapfile() {
@@ -57,8 +84,16 @@ string PacmanMapfile::getProperty(string key) {
 	return properties[key];
 }
 
+int PacmanMapfile::getPropertyInt(string key) {
+	return stoi(getProperty(key));
+}
+
 void PacmanMapfile::setProperty(string key, string value) {
 	properties[key] = value;
+}
+
+void PacmanMapfile::setPropertyInt(string key, int value) {
+	setProperty(key, to_string(value));
 }
 
 bool PacmanMapfile::propertyExists(string key) {
