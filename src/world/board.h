@@ -14,6 +14,8 @@ class PacmanBoard {
 
 	public:
 		PacmanBoard(int width, int height);
+		int width();
+		int height();
 		Tile getTile(int x, int y);
 		void setTile(int x, int y, Tile tile);
 		void fill(Tile tile);

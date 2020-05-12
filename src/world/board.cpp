@@ -9,6 +9,14 @@ PacmanBoard::PacmanBoard(int width, int height) {
 	board.resize(w, vector<Tile>(h));
 }
 
+int PacmanBoard::width() {
+	return w;
+}
+
+int PacmanBoard::height() {
+	return h;
+}
+
 Tile PacmanBoard::getTile(int x, int y) {
 	return board[x][y];
 }
