@@ -10,6 +10,7 @@ using namespace std;
 
 string encodeMap(PacmanBoard map);
 PacmanBoard decodeMap(string encodedMap, int width, int height);
+bool mapGood(PacmanMapfile map);
 PacmanBoard loadMap(PacmanMapfile map);
 PacmanBoard loadMap(string filename);
 void saveMap(string filename, PacmanBoard board, string name);

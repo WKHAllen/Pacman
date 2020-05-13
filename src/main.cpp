@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <string>
 #include <vector>
+#include <utility>
 #include "game.h"
 #include "readdir.h"
 #include "mapfile.h"
@@ -50,23 +51,43 @@ int selection(string prompt, int numOptions, string options[]) {
 	return choice;
 }
 
+pair<vector<string>, vector<string>> filterMaps(vector<string> mapFiles) {
+	vector<string> files;
+	vector<string> names;
+
+	for (string mapFile : mapFiles) {
+		PacmanMapfile mapProperties(mapFile);
+		if (mapGood(mapProperties)) {
+			files.push_back(mapFile);
+			names.push_back(mapProperties.getProperty("name"));
+		}
+	}
+
+	return make_pair(files, names);
+}
+
 string selectMap(string mapDir) {
-	vector<string> files = listFilesByExt(mapDir, ".pacmap");
-	if (files.size() == 0)
+	vector<string> filenames = listFilesByExt(mapDir, ".pacmap");
+	pair<vector<string>, vector<string>> filteredFiles = filterMaps(filenames);
+	vector<string> files = filteredFiles.first;
+	vector<string> names = filteredFiles.second;
+
+	int numMaps = files.size();
+	if (numMaps == 0) {
 		return "";
-	int numFiles = files.size();
+	}
 
 	cout << "Select a map:" << endl << endl;
-	for (int i = 0; i < numFiles; i++) {
+	for (int i = 0; i < numMaps; i++) {
 		cout << setfill(' ') << setw(4) << i + 1;
-		cout << ". " << files[i] << endl;
+		cout << ". " << names[i] << endl;
 	}
 
 	cout << endl << "> ";
 	int choice = 0;
 	int retCode = getInt(&choice);
-	while (!retCode || choice < 1 || choice > numFiles) {
-		cout << "Please enter an integer between 1 and " << numFiles << "." << endl << "> ";
+	while (!retCode || choice < 1 || choice > numMaps) {
+		cout << "Please enter an integer between 1 and " << numMaps << "." << endl << "> ";
 		retCode = getInt(&choice);
 	}
 
@@ -79,9 +100,9 @@ void play(string mapFile) {
 
 void pause(string prompt) {
 	int ch;
-	do
+	do {
 		ch = fgetc(stdin);
-	while (ch != EOF && ch != '\n');
+	} while (ch != EOF && ch != '\n');
 	clearerr(stdin);
 	cout << prompt;
 	fflush(stdout);
@@ -100,7 +121,7 @@ int main(int argc, char *argv[]) {
 
 		string mapFile;
 		switch (selected) {
-			case 1: ;
+			case 1:
 				mapFile = selectMap(mapDirPath);
 				if (mapFile.length() == 0)
 					pause("No map files found. Press enter to return to the menu.");
